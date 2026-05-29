@@ -1,27 +1,25 @@
 public class Jogo {
 
-    private Personagem personagem;
-    private boolean jogoAtivo = true;
+    public static void iniciar() {
+        boolean jogoAtivo = true;
 
-    public void iniciar() {
         while (jogoAtivo) {
-            personagem = criarPersonagem();
-
+            criarPersonagem();
             menuStatus();
 
-            if (personagem.vivo) Fases.fase1PrimeiraAula(personagem);
-            if (personagem.vivo) Fases.fase2ListaExercicios(personagem);
-            if (personagem.vivo) Fases.fase3Prova(personagem);
-            if (personagem.vivo) Fases.fase4ProjetoGrupo(personagem);
-            if (personagem.vivo) Fases.fase5FinalSemestre(personagem);
+            if (Personagem.vivo) Fases.fase1PrimeiraAula();
+            if (Personagem.vivo) Fases.fase2ListaExercicios();
+            if (Personagem.vivo) Fases.fase3Prova();
+            if (Personagem.vivo) Fases.fase4ProjetoGrupo();
+            if (Personagem.vivo) Fases.fase5FinalSemestre();
 
-            encerrarJogo();
+            jogoAtivo = encerrarJogo();
         }
 
         Utilitarios.getScanner().close();
     }
 
-    private Personagem criarPersonagem() {
+    private static void criarPersonagem() {
         Utilitarios.limparTela();
         System.out.println("==============================================");
         System.out.println("   A JORNADA DO CALOURO EM ALGORITMOS");
@@ -32,39 +30,38 @@ public class Jogo {
         System.out.print("Digite o nome do personagem: ");
         String nome = Utilitarios.getScanner().nextLine();
 
-        Personagem p = new Personagem(nome);
+        Personagem.inicializar(nome);
         System.out.println("\nBem-vindo, " + nome + "!");
         Utilitarios.pausar();
-        return p;
     }
 
-    private void menuStatus() {
-        personagem.atualizarNivel();
+    private static void menuStatus() {
+        Personagem.atualizarNivel();
         Utilitarios.limparTela();
         System.out.println("============== STATUS DO PERSONAGEM ==============");
-        personagem.exibirStatus();
+        Personagem.exibirStatus();
         System.out.println("==================================================");
         Utilitarios.pausar();
     }
 
-    private void encerrarJogo() {
+    private static boolean encerrarJogo() {
         Utilitarios.limparTela();
-        personagem.atualizarNivel();
+        Personagem.atualizarNivel();
 
         System.out.println("============== RESULTADO FINAL ==============");
-        personagem.exibirStatus();
+        Personagem.exibirStatus();
         System.out.println("=============================================");
 
-        if (!personagem.vivo) {
+        if (!Personagem.vivo) {
             System.out.println("FINAL: Game Over.");
             System.out.println("Seu personagem chegou ao limite e não conseguiu concluir o semestre.");
-        } else if (personagem.conhecimento >= 9 && personagem.motivacao >= 6 && personagem.energia >= 3) {
+        } else if (Personagem.conhecimento >= 9 && Personagem.motivacao >= 6 && Personagem.energia >= 3) {
             System.out.println("FINAL: Aprovado com excelente desempenho em Algoritmos!");
             System.out.println("Você dominou os fundamentos e encerrou o semestre em destaque.");
-        } else if (personagem.conhecimento >= 6 && personagem.motivacao >= 3) {
+        } else if (Personagem.conhecimento >= 6 && Personagem.motivacao >= 3) {
             System.out.println("FINAL: Aprovado!");
             System.out.println("Você conseguiu vencer os desafios e concluir a disciplina.");
-        } else if (personagem.conhecimento >= 3) {
+        } else if (Personagem.conhecimento >= 3) {
             System.out.println("FINAL: Exame final.");
             System.out.println("Você ainda tem uma chance, mas precisa estudar mais.");
         } else {
@@ -80,9 +77,10 @@ public class Jogo {
         if (opcao == 1) {
             System.out.println("\nReiniciando aventura...");
             Utilitarios.pausar();
+            return true;
         } else {
-            jogoAtivo = false;
             System.out.println("Obrigado por jogar!");
+            return false;
         }
     }
 }

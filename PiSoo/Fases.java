@@ -1,6 +1,6 @@
 public class Fases {
 
-    public static void fase1PrimeiraAula(Personagem p) {
+    public static void fase1PrimeiraAula() {
         Utilitarios.limparTela();
         System.out.println("══════════════════════════════════════");
         System.out.println("  FASE 1 - PRIMEIRA AULA");
@@ -13,22 +13,22 @@ public class Fases {
         int opcao = Utilitarios.lerOpcao(1, 3);
 
         if (opcao == 1) {
-            p.alterarStatus(2, 2, -1, 0);
+            Personagem.alterarStatus(2, 2, -1, 0);
             System.out.println("Boa escolha! Você começou o semestre com foco.");
         } else if (opcao == 2) {
-            p.alterarStatus(-1, -1, 0, 0);
+            Personagem.alterarStatus(-1, -1, 0, 0);
             System.out.println("Você subestimou a disciplina e perdeu ritmo.");
         } else {
-            p.alterarStatus(1, 1, 0, 0);
+            Personagem.alterarStatus(1, 1, 0, 0);
             System.out.println("Você manteve uma postura equilibrada.");
         }
 
-        p.exibirStatus();
-        p.verificarSituacao();
+        Personagem.exibirStatus();
+        Personagem.verificarSituacao();
         Utilitarios.pausar();
     }
 
-    public static void fase2ListaExercicios(Personagem p) {
+    public static void fase2ListaExercicios() {
         Utilitarios.limparTela();
         System.out.println("══════════════════════════════════════");
         System.out.println("  FASE 2 - LISTA DE EXERCÍCIOS");
@@ -41,15 +41,15 @@ public class Fases {
 
         switch (opcao) {
             case 1:
-                p.alterarStatus(3, 1, -2, 0);
+                Personagem.alterarStatus(3, 1, -2, 0);
                 System.out.println("Você aprendeu bastante praticando.");
                 break;
             case 2:
-                p.alterarStatus(-1, -2, 0, -1);
+                Personagem.alterarStatus(-1, -2, 0, -1);
                 System.out.println("Você entregou, mas não aprendeu de verdade.");
                 break;
             case 3:
-                p.alterarStatus(2, 2, -1, 0);
+                Personagem.alterarStatus(2, 2, -1, 0);
                 System.out.println("Ótimo! Você aprendeu com apoio sem depender dos outros.");
                 break;
             default:
@@ -57,12 +57,12 @@ public class Fases {
                 break;
         }
 
-        p.exibirStatus();
-        p.verificarSituacao();
+        Personagem.exibirStatus();
+        Personagem.verificarSituacao();
         Utilitarios.pausar();
     }
 
-    public static void fase3Prova(Personagem p) {
+    public static void fase3Prova() {
         Utilitarios.limparTela();
         System.out.println("══════════════════════════════════════");
         System.out.println("  FASE 3 - PROVA INTERMEDIÁRIA");
@@ -74,27 +74,27 @@ public class Fases {
         int opcao = Utilitarios.lerOpcao(1, 3);
 
         if (opcao == 1) {
-            if (p.conhecimento >= 4) {
-                p.alterarStatus(2, 2, -1, 0);
+            if (Personagem.conhecimento >= 4) {
+                Personagem.alterarStatus(2, 2, -1, 0);
                 System.out.println("Você foi muito bem na prova!");
             } else {
-                p.alterarStatus(0, 1, -1, 0);
+                Personagem.alterarStatus(0, 1, -1, 0);
                 System.out.println("Você se esforçou, mas percebeu que precisa praticar mais.");
             }
         } else if (opcao == 2) {
-            p.alterarStatus(-2, -3, -1, -2);
+            Personagem.alterarStatus(-2, -3, -1, -2);
             System.out.println("Você foi pego tentando colar e sofreu uma grande penalidade.");
         } else {
-            p.alterarStatus(0, -2, -1, -1);
+            Personagem.alterarStatus(0, -2, -1, -1);
             System.out.println("A prova foi difícil e a falta de estudo pesou.");
         }
 
-        p.exibirStatus();
-        p.verificarSituacao();
+        Personagem.exibirStatus();
+        Personagem.verificarSituacao();
         Utilitarios.pausar();
     }
 
-    public static void fase4ProjetoGrupo(Personagem p) {
+    public static void fase4ProjetoGrupo() {
         Utilitarios.limparTela();
         System.out.println("══════════════════════════════════════");
         System.out.println("  FASE 4 - PROJETO EM GRUPO");
@@ -107,15 +107,15 @@ public class Fases {
 
         switch (opcao) {
             case 1:
-                p.alterarStatus(2, 1, -2, 0);
+                Personagem.alterarStatus(2, 1, -2, 0);
                 System.out.println("Você evoluiu tecnicamente com o desafio.");
                 break;
             case 2:
-                p.alterarStatus(-1, -2, 0, -1);
+                Personagem.alterarStatus(-1, -2, 0, -1);
                 System.out.println("Seu grupo percebeu sua falta de compromisso.");
                 break;
             case 3:
-                p.alterarStatus(2, 2, -1, 0);
+                Personagem.alterarStatus(2, 2, -1, 0);
                 System.out.println("Boa liderança e boa colaboração renderam bons resultados.");
                 break;
             default:
@@ -123,12 +123,12 @@ public class Fases {
                 break;
         }
 
-        p.exibirStatus();
-        p.verificarSituacao();
+        Personagem.exibirStatus();
+        Personagem.verificarSituacao();
         Utilitarios.pausar();
     }
 
-    public static void fase5FinalSemestre(Personagem p) {
+    public static void fase5FinalSemestre() {
         Utilitarios.limparTela();
         System.out.println("══════════════════════════════════════");
         System.out.println("  FASE 5 - RETA FINAL");
@@ -140,18 +140,18 @@ public class Fases {
         int opcao = Utilitarios.lerOpcao(1, 3);
 
         if (opcao == 1) {
-            p.alterarStatus(3, 2, -1, 0);
+            Personagem.alterarStatus(3, 2, -1, 0);
             System.out.println("Seu esforço final consolidou o aprendizado.");
         } else if (opcao == 2) {
-            p.alterarStatus(1, -1, -1, 0);
+            Personagem.alterarStatus(1, -1, -1, 0);
             System.out.println("Você até tenta recuperar, mas sem base sólida.");
         } else {
-            p.alterarStatus(-1, -3, -1, -2);
+            Personagem.alterarStatus(-1, -3, -1, -2);
             System.out.println("Você perdeu a chance de reagir na reta final.");
         }
 
-        p.exibirStatus();
-        p.verificarSituacao();
+        Personagem.exibirStatus();
+        Personagem.verificarSituacao();
         Utilitarios.pausar();
     }
 }
